@@ -1,27 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Red Hat Display", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Common styles */
+.max-width {
+  @apply w-full max-w-[1440px] mx-auto;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.padding-x {
+  @apply sm:px-16 px-4;
+}
+
+.padding-y {
+  @apply py-4;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+/* Hero styles */
+.hero {
+  @apply flex xl:flex-row flex-col xl:gap-5 gap-y-5 relative z-0 max-w-[1440px] mx-auto;
+}
+
+.hero__title {
+  @apply xl:text-6xl xl:leading-[64px] sm:text-5xl sm:leading-[54px] text-[30px] leading-9 font-extrabold;
+}
+
+.hero__subtitle {
+  @apply text-lg leading-6 text-gray-400 mt-1;
 }
