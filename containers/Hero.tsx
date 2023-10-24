@@ -1,7 +1,14 @@
-import { Button, Logo } from "@/components";
-import React from "react";
+"use client";
+
+import { Logo, TDButton, TDInput, TDModal } from "@/components";
+import React, { useState } from "react";
+import RegisterTeacherModal from "./RegisterTeacherModal";
+import RegisterStudentModal from "./RegisterStudentModal";
 
 const Hero = () => {
+  const [isTeacherModalOpen, setIsTeacherModalOpen] = useState(false);
+  const [isStudentModalOpen, setIsStudentModalOpen] = useState(false);
+
   return (
     <div className="max-width">
       <div className="fixed w-full z-10 bg-white">
@@ -18,6 +25,20 @@ const Hero = () => {
       </div>
 
       {/* hero */}
+
+      <RegisterTeacherModal
+        isOpen={isTeacherModalOpen}
+        onClose={() => {
+          setIsTeacherModalOpen(false);
+        }}
+      />
+      <RegisterStudentModal
+        isOpen={isStudentModalOpen}
+        onClose={() => {
+          setIsStudentModalOpen(false);
+        }}
+      />
+
       <section className="hero max-width flex-between flex-col pt-10 padding-x h-[90vh]">
         <div className="max-w-xl space-y-8">
           <div className="space-y-3">
@@ -30,8 +51,19 @@ const Hero = () => {
             </p>
           </div>
           <div className="flex-start space-x-3">
-            <Button title="Register as a Teacher" />
-            <Button variant="secondary" title="Register as a Student" />
+            <TDButton
+              title="Register as a Teacher"
+              onClick={() => {
+                setIsTeacherModalOpen(true);
+              }}
+            />
+            <TDButton
+              variant="secondary"
+              title="Register as a Student"
+              onClick={() => {
+                setIsStudentModalOpen(true);
+              }}
+            />
           </div>
         </div>
         {/* image */}

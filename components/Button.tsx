@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  FC,
-  HTMLAttributes,
-  forwardRef,
-} from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, forwardRef } from "react";
 
 type CommonProps = {
   isLoading?: boolean;

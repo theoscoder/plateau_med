@@ -1,13 +1,18 @@
 "use client";
 
-import { Tabs } from "@/components";
+import { TDTabs } from "@/components";
 import MemberItem from "@/components/MemberItem";
+import { useStudent } from "@/hooks/useStudent";
+import { useTeacher } from "@/hooks/useTeacher";
 import React, { useState } from "react";
 
 export type TMemberTab = "teacher" | "student";
 type TMemberTabItem = { id: TMemberTab; title: string; isActive: boolean };
 
 const Members = () => {
+  const { teachers } = useTeacher();
+  const { students } = useStudent();
+
   const [activeTab, setActiveTab] = useState<TMemberTab>("teacher");
 
   // TODO: Add grid and list
@@ -34,7 +39,7 @@ const Members = () => {
       </div>
 
       {/* tab */}
-      <Tabs<TMemberTabItem>
+      <TDTabs<TMemberTabItem>
         items={tabItems}
         onSelect={(tab) => {
           setActiveTab(tab.id);
@@ -43,38 +48,30 @@ const Members = () => {
 
       {/* grid or list */}
       <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
-        <MemberItem
-          isGrid={isGrid}
-          name="James"
-          surname="Patrick"
-          title="Mr"
-          role="student"
-          memberNo={2}
-        />
-        <MemberItem
-          isGrid={isGrid}
-          name="James"
-          surname="Patrick"
-          title="Mr"
-          role="teacher"
-          memberNo={3}
-        />
-        <MemberItem
-          isGrid={isGrid}
-          name="James"
-          surname="Patrick"
-          title="Mr"
-          role="teacher"
-          memberNo={1}
-        />
-        <MemberItem
-          isGrid={isGrid}
-          name="James"
-          surname="Patrick"
-          title="Mr"
-          role="teacher"
-          memberNo={4}
-        />
+        {activeTab === "teacher" &&
+          teachers.map(({ nationalID, teacherNo, ...rest }) => {
+            return (
+              <MemberItem
+                key={nationalID}
+                isGrid={isGrid}
+                {...rest}
+                role="teacher"
+                memberNo={teacherNo}
+              />
+            );
+          })}
+        {activeTab === "student" &&
+          students.map(({ nationalID, studentNo, ...rest }) => {
+            return (
+              <MemberItem
+                key={nationalID}
+                isGrid={isGrid}
+                {...rest}
+                role="student"
+                memberNo={studentNo}
+              />
+            );
+          })}
       </div>
     </section>
   );

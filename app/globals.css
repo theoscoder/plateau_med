@@ -44,6 +44,10 @@ h3 {
   @apply xl:text-4xl xl:leading-10 text-2xl leading-7 font-extrabold text-black;
 }
 
+h4 {
+  @apply xl:text-2xl xl:leading-7 text-xl leading-6 font-extrabold text-black;
+}
+
 /* Hero styles */
 .hero {
   @apply flex xl:flex-row flex-col xl:gap-5 gap-y-5 relative z-0 max-w-[1440px] mx-auto;
@@ -57,4 +61,15 @@ h3 {
   @apply text-lg leading-6 text-gray-400 mt-1;
 }
 
-/* Teacher or student */
+/* Hide number scroll */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}

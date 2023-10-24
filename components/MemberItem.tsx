@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 
-type MemberItemProps = {
+interface MemberItemProps {
   name: string;
   role: "teacher" | "student";
   surname: string;
   title?: TTeacherTitle;
   isGrid?: boolean;
   memberNo?: number;
-};
+}
 const MemberItem: FC<MemberItemProps> = ({
   isGrid = "true",
   role,
