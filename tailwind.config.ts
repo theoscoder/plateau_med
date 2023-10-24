@@ -13,8 +13,14 @@ const config: Config = {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
-        "primary-blue": {
+        primary: {
           DEFAULT: "#2463eb",
+        },
+        secondary: {
+          DEFAULT: "#7CAE7A",
+        },
+        black: {
+          DEFAULT: "#0d1b2a",
         },
       },
     },

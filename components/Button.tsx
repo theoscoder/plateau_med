@@ -29,7 +29,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isLoading || isDisabled}
         {...rest}
         className={`flex-1 w-fit flex-center px-5 py-3 rounded-md font-medium text-sm ${
-          isInaccessible ? "cursor-not-allowed" : "bg-primary-blue"
+          isInaccessible
+            ? "cursor-not-allowed"
+            : variant === "primary"
+            ? "bg-primary"
+            : "bg-secondary"
         }`}
       >
         <span>{/* loading icon */}</span>
